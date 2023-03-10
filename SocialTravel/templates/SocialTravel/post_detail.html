@@ -1,0 +1,12 @@
+{% extends 'SocialTravel/base.html' %}
+{% load static %}
+
+{% block main %}
+<ul class="mt-5 list-unstyled">
+    {% for post in object_list %}
+    <li>{{ post.id }} - {{ post.carousel_caption_title }} - {{ post_heading }}</li>
+        <a href="{% url 'post-update' post.id %}">Actualizar</a>
+        <a href="{% url 'post-borrar' post.id %}">Borrar</a>
+    {% endfor %}
+</ul>
+{% endblock main %}

@@ -15,9 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SocialTravel.views import index, mostrar_otro_template
+from SocialTravel.views import (index, mostrar_otro_template, PostList, PostDetail, PostUpdate, PostDelete, PostCreate, PostSearch
+)
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('mi-otro-template/', mostrar_otro_template, name="otro-template"),
+
+
+
+    path('post/list', PostList.as_view(), name="post-list"),
+    path('post/<pk>/detail', PostDetail.as_view(), name="post-detail"),
+    path('post/<pk>/update', PostUpdate.as_view(), name="post-update"),
+    path('post/<pk>/delete', PostDelete.as_view(), name="post-delete"),
+    path('post/create', PostCreate.as_view(), name="post-create"),
+    path('post/search', PostSearch.as_view(), name="post-search"),
 ]
